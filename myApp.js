@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
 //add env config
-require('dotenv').config();
 //in heroku we need to config var of key and valeus in config var section
+require('dotenv').config();
+var bodyParser = require('body-parser');
 
 //add a middleware function
 app.use( (req, res, next) => {
@@ -10,9 +11,24 @@ app.use( (req, res, next) => {
     next();
 } )
 
-
-
 console.log("Hello World");
+
+//POST is the default method used to send client data with HTML forms.
+//In REST convention, 
+//POST is used to send data to create new items in the database (a new user, or a new blog post).
+//With Ajax, you can also use JSON to handle data having a more complex structure. 
+//you have to install the body-parser package. 
+//This package allows you to use a series of middleware, which can decode data in different formats.
+//middleware un before any other routes run
+//path is nto define because it contain all the path
+//middleware required next
+app.use( (req,res, next) => {
+    console.log(bodyParser);
+    bodyParser.urlencoded({extended: false});
+    next();
+} )
+
+
 //add the index.html to our server to display for the client
 app.get("/", (req,res) => {
   res.sendFile(__dirname + "/views/index.html");
@@ -77,12 +93,6 @@ app.get("/:word/echo", (req, res) => {
     });
  });
 
-//POST is the default method used to send client data with HTML forms.
-//In REST convention, 
-//POST is used to send data to create new items in the database (a new user, or a new blog post).
-//With Ajax, you can also use JSON to handle data having a more complex structure. 
-//you have to install the body-parser package. 
-//This package allows you to use a series of middleware, which can decode data in different formats.
 
 
 
