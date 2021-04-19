@@ -4,6 +4,14 @@ var app = express();
 require('dotenv').config();
 //in heroku we need to config var of key and valeus in config var section
 
+//add a middleware function
+app.use( (req, res, next) => {
+    console.log(req.method + " " +req.path + " - " +req.ip)
+    next();
+} )
+
+
+
 console.log("Hello World");
 //add the index.html to our server to display for the client
 app.get("/", (req,res) => {
