@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 //add env config
 require('dotenv').config();
+//in heroku we need to config var of key and valeus in config var section
 
 console.log("Hello World");
 //add the index.html to our server to display for the client
