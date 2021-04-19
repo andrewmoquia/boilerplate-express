@@ -88,6 +88,19 @@ app.get("/:word/echo", (req, res) => {
     });
  });
 
+//POST (sometimes PUT) - Create a new resource using the information sent with the request,
+//GET - Read an existing resource without modifying it,
+//PUT or PATCH (sometimes POST) - Update a resource using the data sent,
+//DELETE => Delete a resource.
+
+//when we submit the form in index.html, initialize this method
+//we turn the input data into json
+app.post("/name", (req, res) => {
+    console.log(req.body.first)
+    res.json({
+        name: req.body.first + " " + req.body.last
+    });
+})
 
 
 
