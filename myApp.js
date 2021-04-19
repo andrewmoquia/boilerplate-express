@@ -38,7 +38,22 @@ app.get("/json", (req,res) => {
     res.json(jsonResponse);
 });
 
+//Middleware can be mounted at a specific route using app.METHOD(path, middlewareFunction).
+//This approach is useful to split the server operations into smaller units. 
 
+//function to get the current time
+function getCurrentTimeString() {
+    return new Date().toString();
+}
+
+//add middleware
+app.get("/now", (req, res, next) => {
+    req.time = getCurrentTimeString();
+    next();   
+}, (req, res) => {
+    const jsonResponse = {time: req.time};
+    res.json(jsonResponse);
+})
 
 
 
