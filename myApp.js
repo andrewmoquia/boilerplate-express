@@ -19,6 +19,7 @@ app.get("/", (req,res) => {
 });
 
 //add some files like css or image the server that will support the index.html
+//dirname = the inital url of our website or the root path
 app.use('/public', express.static(__dirname +  '/public'));
 
 //add json route to the website with a dummy object
@@ -67,6 +68,14 @@ app.get("/:word/echo", (req, res) => {
    res.json({echo: req.params.word}) 
 });
 
+//Another common way to get input from the client is by 
+//encoding the data after the route path, using a query string.
+ app.get("/name", (req, res) => {
+    console.log(req.query);
+    res.json({
+        name: req.query.first + " " + req.query.last
+    });
+ });
 
 
 
