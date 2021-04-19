@@ -6,6 +6,7 @@
 var bGround = require('fcc-express-bground');
 var myApp = require('./myApp');
 var express = require('express');
+
 var app = express();
 
 if (!process.env.DISABLE_XORIGIN) {
@@ -20,6 +21,8 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
+
+app.use('/public', express.static(__dirname +  '/public'));
 
 app.get("/", (req,res) => {
   res.sendFile(__dirname + "/views/index.html");
