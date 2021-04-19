@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+//add env config
+require('dotenv').config();
 
 console.log("Hello World");
 //add the index.html to our server to display for the client
