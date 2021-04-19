@@ -5,14 +5,6 @@ var app = express();
 require('dotenv').config();
 var bodyParser = require('body-parser');
 
-//add a middleware function
-app.use( (req, res, next) => {
-    console.log(req.method + " " +req.path + " - " +req.ip)
-    next();
-} )
-
-console.log("Hello World");
-
 //POST is the default method used to send client data with HTML forms.
 //In REST convention, 
 //POST is used to send data to create new items in the database (a new user, or a new blog post).
@@ -22,12 +14,15 @@ console.log("Hello World");
 //middleware un before any other routes run
 //path is nto define because it contain all the path
 //middleware required next
-app.use( (req,res, next) => {
-    console.log(bodyParser);
-    bodyParser.urlencoded({extended: false});
+app.use(bodyParser.urlencoded({extended: false}));  
+
+//add a middleware function
+app.use( (req, res, next) => {
+    console.log(req.method + " " +req.path + " - " +req.ip)
     next();
 } )
 
+console.log("Hello World");
 
 //add the index.html to our server to display for the client
 app.get("/", (req,res) => {
