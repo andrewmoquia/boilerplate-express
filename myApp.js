@@ -55,8 +55,17 @@ app.get("/now", (req, res, next) => {
     res.json(jsonResponse);
 })
 
-
-
+//Get Route Parameter Input from the Client
+//When building an API, we have to allow users to communicate to us what they want to get from our service. 
+//if the client is requesting information about a user stored in the database, 
+//they need a way to let us know which user they're interested in
+//Route parameters are named segments of the URL, delimited by slashes (/)
+//this is not a middleware
+//passing  the parameters to the api and converting them to message echo
+app.get("/:word/echo", (req, res) => {
+   console.log(req.params);
+   res.json({echo: req.params.word}) 
+});
 
 
 
