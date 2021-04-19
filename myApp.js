@@ -77,7 +77,12 @@ app.get("/:word/echo", (req, res) => {
     });
  });
 
-
+//POST is the default method used to send client data with HTML forms.
+//In REST convention, 
+//POST is used to send data to create new items in the database (a new user, or a new blog post).
+//With Ajax, you can also use JSON to handle data having a more complex structure. 
+//you have to install the body-parser package. 
+//This package allows you to use a series of middleware, which can decode data in different formats.
 
 
 
